@@ -1,0 +1,71 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 align="center">{{titulo | uppercase }}</h3>
+                    <br>
+                    <form class="mt-3" [formGroup]="GoleadorForm" (ngSubmit)="agregarGoleador()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="rut_jugador"
+                            class="form-control form-control-lg" placeholder="Rut Jugador">
+                            <div class="text-danger"
+                                *ngIf="GoleadorForm.get('rut_jugador')?.hasError('required')
+                                && GoleadorForm.get('rut_jugador')?.touched">
+                                <span>El Rut del Jugador es <strong>Obligatorio</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="total_goles"
+                            class="form-control form-control-lg" placeholder="Total Goles">
+                            <div class="text-danger"
+                            *ngIf="GoleadorForm.get('total_goles')?.hasError('required')
+                            && GoleadorForm.get('total_goles')?.touched">
+                            <span>El total de goles es <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="club">
+                              <option *ngFor="let club of listaClub" [value]="club.id_club | number">
+                                {{club.nombre_club}}</option>
+                            </select>
+                            </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="nombre_jugador"
+                            class="form-control form-control-lg" placeholder="Nombre Jugador">
+                            <div class="text-danger"
+                            *ngIf="GoleadorForm.get('nombre_jugador')?.hasError('required')
+                            && GoleadorForm.get('nombre_jugador')?.touched">
+                            <span>El nombre del jugador es <strong>Obligatorio</strong></span>
+                        </div>
+                        </div>
+                          <!--<div class="mb-3">
+                            <input type="text" formControlName="informacion_goleador"
+                            class="form-control form-control-lg" placeholder="Informacion Goleador">
+                            <div class="text-danger"
+                            *ngIf="GoleadorForm.get('informacion_goleador')?.hasError('required')
+                            && GoleadorForm.get('informacion_goleador')?.touched">
+                            <span> Información es <strong>Obligatoria</strong></span>
+                        </div>
+                          </div> -->
+                          <div class="form-floating">
+                            <textarea class="form-control" formControlName="informacion_goleador" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Informacion Goles</label>
+                          </div>
+                      <br>
+                      <div class="mb-3">
+                        <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                        <button routerLink="/tabla-goleadores-admin" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>
+

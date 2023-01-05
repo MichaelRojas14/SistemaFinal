@@ -1,0 +1,72 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 align="center">{{titulo | uppercase }}</h3>
+                    <br>
+                    <form class="mt-3" [formGroup]="JuvenilForm" (ngSubmit)="agregarParSerieJ()">
+                        <div class="mb-3">
+                            <input type="text" maxlength="12" formControlName="fecha"
+                            class="form-control form-control-lg" placeholder="Fecha Partido ">
+                            <div class="text-danger"
+                                *ngIf="JuvenilForm.get('fecha')?.hasError('required')
+                                && JuvenilForm.get('fecha')?.touched">
+                                <span>La Fecha del Partido es <strong>Obligatoria</strong></span>
+                            </div>
+                          </div>
+                         <div class="mb-3">
+                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                          formControlName="id_local">
+                            <option *ngFor="let club of listaClub" [value]="club.id_club | number">
+                              {{club.nombre_club}}</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" maxlength="12" formControlName="goles_local"
+                            class="form-control form-control-lg" placeholder="Goles Local">
+                            <div class="text-danger"
+                                *ngIf="JuvenilForm.get('goles_local')?.hasError('required')
+                                && JuvenilForm.get('goles_local')?.touched">
+                                <span> Los goles del local son <strong>Obligatorios</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" maxlength="12" formControlName="goles_visita"
+                            class="form-control form-control-lg" placeholder="Goles Visita">
+                            <div class="text-danger"
+                                *ngIf="JuvenilForm.get('goles_visita')?.hasError('required')
+                                && JuvenilForm.get('goles_visita')?.touched">
+                                <span>Los Goles de la Visita son <strong>Obligatorios</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                          formControlName="id_visita">
+                            <option *ngFor="let club of listaClub" [value]="club.id_club| number">
+                              {{club.nombre_club}}</option>
+                          </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="id_serie">
+                              <option *ngFor="let serie of listaSerie" [value]="serie.id_serie| number">
+                                {{serie.nombre_serie}}</option>
+                            </select>
+                          </div>
+
+                          <br>
+                          <div class="mb-3">
+                            <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                            <button routerLink="/resultados-admin" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                          </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>

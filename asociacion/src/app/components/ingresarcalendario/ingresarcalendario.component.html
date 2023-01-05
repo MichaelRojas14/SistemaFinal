@@ -1,0 +1,56 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 align="center">{{titulo | uppercase }}</h3>
+                    <br>
+                    <form class="mt-3" [formGroup]="CalendarioForm" (ngSubmit)="agregarcalendario()">
+                        <div class="mb-3">
+                            <input type="text" maxlength="12" formControlName="fecha_partido"
+                            class="form-control form-control-lg" placeholder="Fecha Partido ">
+                            <div class="text-danger"
+                                *ngIf="CalendarioForm.get('fecha_partido')?.hasError('required')
+                                && CalendarioForm.get('fecha_partido')?.touched">
+                                <span>La Fecha del Partido es <strong>Obligatoria</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="informacion"
+                            class="form-control form-control-lg" placeholder="Informacion">
+                            <div class="text-danger"
+                            *ngIf="CalendarioForm.get('informacion')?.hasError('required')
+                            && CalendarioForm.get('informacion')?.touched">
+                            <span>La informacion del Partido es <strong>Obligatoria</strong></span>
+                        </div>
+                          </div>
+                         <div class="mb-3">
+                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                          formControlName="clublocal">
+                            <option *ngFor="let club of listaClub" [value]="club.id_club | number">
+                              {{club.nombre_club}}</option>
+                          </select>
+                        </div>
+                          <div class="mb-3">
+                          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                          formControlName="clubvisita">
+                            <option *ngFor="let club of listaClub" [value]="club.id_club| number">
+                              {{club.nombre_club}}</option>
+                          </select>
+                        </div>
+                          <br>
+                          <div class="mb-3">
+                            <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                            <button routerLink="/calendario-admin" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                          </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>
+

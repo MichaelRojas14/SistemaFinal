@@ -1,0 +1,107 @@
+<!--MENU PRINCIPAL-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">
+        <img src="https://i.postimg.cc/bYxXJMMk/logo.jpg" 
+        width="50" height="60"class="rounded mx-auto d-block" alt="..." class="navbar-brand">
+        Asociacion De Fútbol Villa Alegre
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Villa Alegre</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <button class="btn btn-success float-end" routerLink="/login" >Iniciar Sesion</button>
+            </li>
+            <br>
+            <li class="nav-item">
+              <a class="nav-link" href="/quienes-somos">Quienes Somos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/informacion">Información Del Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/calendario">Calendario</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tablas
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="/goleador">Goleadores</a></li>
+                <li><a class="dropdown-item" href="/menos-batida">Valla Menos Batida</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tablas de Posiciones
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="/tabla-juvenil">Serie Juvenil</a></li>
+                <li><a class="dropdown-item" href="/tabla-cincuenta">Serie 50</a></li>
+                <li><a class="dropdown-item" href="/tabla-primera">Primera Serie</a></li>
+                <li><a class="dropdown-item" href="/tabla-cuarenta">Serie 45</a></li>
+                <li><a class="dropdown-item" href="/tabla-treinta">Serie 35</a></li>
+                <li><a class="dropdown-item" href="/posiciones">Serie de Honor</a></li>
+              </ul>
+            </li>
+            <br>
+        <br>
+          </ul>
+          <br>
+        </div>
+      </div>
+    </div>
+  </nav>
+        <br>
+    <br>
+  <br>
+
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <br>
+                    <h1 align="center">Tabla De Posiciones</h1>
+                    <hr class="border border-success border-3 opacity-50">
+                  <br>
+                  <table class="table table-hover" id="htmlPosiciones">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="text-align: center">Nombre</th>
+                        <th scope="col" style="text-align: center">PJ</th>
+                        <th scope="col" style="text-align: center">PG</th>
+                        <th scope="col" style="text-align: center">PE</th>
+                        <th scope="col" style="text-align: center">PP</th>
+                        <th scope="col" style="text-align: center">Serie</th>
+                        <th scope="col" style="text-align: center">Puntos</th>
+                        <th whidth="5%"></th>
+
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let Cuarenta of listaPosicion"> 
+                        <td style="text-align: center">{{Cuarenta.nombre_club}}</td>
+                        <td style="text-align: center">{{Cuarenta.part_jugado}}</td>
+                        <td style="text-align: center">{{Cuarenta.part_ganado}}</td>
+                        <td style="text-align: center">{{Cuarenta.part_empatado}}</td>
+                        <td style="text-align: center">{{Cuarenta.part_perdido}}</td>
+                        <td style="text-align: center">{{Cuarenta.nombre_serie}}</td>
+                        <td style="text-align: center">{{Cuarenta.puntos}}</td>
+                      </tr>
+                    <tbody>
+                  </table>           
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        <br>

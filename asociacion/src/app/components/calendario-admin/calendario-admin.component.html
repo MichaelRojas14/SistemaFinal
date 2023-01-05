@@ -1,0 +1,120 @@
+<!--MENU PRINCIPAL-->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/inicio-admin">
+      <img src="https://i.postimg.cc/bYxXJMMk/logo.jpg" 
+      width="50" height="60"class="rounded mx-auto d-block" alt="..." class="navbar-brand">
+      Asociacion De Fútbol Villa Alegre
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Administrador</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+              <button class="btn btn-danger float-end" routerLink="/inicio" (click)="logout()" >Cerrar Sesion</button>
+            </li>
+          <br>
+          <li class="nav-item">
+            <a class="nav-link" href="/jugadores">Jugadores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clubes">Clubes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/suspensiones-jugador">Suspensiones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/calendario-admin">Calendario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/resultados-admin">Resultados</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tablas
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/tabla-goleadores-admin">Goleadores</a></li>
+              <li><a class="dropdown-item" href="/tabla-valla-batida-admin">Valla Menos Batida</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tablas de Posiciones
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/tabla-juvenil-admin">Serie Juvenil</a></li>
+              <li><a class="dropdown-item" href="/tabla-cincuenta-admin">Serie 50</a></li>
+              <li><a class="dropdown-item" href="/tabla-primera-admin">Primera Serie</a></li>
+              <li><a class="dropdown-item" href="/tabla-cuarenta-admin">Serie 45</a></li>
+              <li><a class="dropdown-item" href="/tabla-treinta-admin">Serie 35</a></li>
+              <li><a class="dropdown-item" href="/posiciones-admin">Serie de Honor</a></li>
+            </ul>
+          </li>
+          <br>
+      <br>
+        </ul>
+        <br>
+      </div>
+    </div>
+  </div>
+</nav>
+            <br>
+          <br>
+  <br>
+
+<!--CONTENIDO-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <br>
+                    <button class="btn btn-success float-end" routerLink="/ingresar-calendario" >Nuevo</button>
+                    <h3 align="center">Calendario</h3>  
+                    <hr class="border border-success border-3 opacity-50">
+                  <br>     
+                  <table class="table table-hover" id="htmlCalendario">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="text-align: center">Club Local</th>
+                        <th scope="col" style="text-align: center">x</th>
+                        <th scope="col" style="text-align: center">Club Visita</th>
+                        <th scope="col" style="text-align: center">Informacion</th>
+                        <th scope="col" style="text-align: center">Fecha</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let Calendario of listaCalendario">
+                        <td style="text-align: center">{{Calendario.clublocal}}</td>
+                        <td style="text-align: center">x</td>
+                        <td style="text-align: center">{{Calendario.clubvisita}}</td>
+                        <td style="text-align: center">{{Calendario.informacion}}</td>
+                        <td style="text-align: center">{{Calendario.fecha_partido}}</td>
+                        
+                        <td>
+                          <!--Modificar-->
+                          <i [routerLink] ="['/editar-calendario',Calendario.id_calendario]"class="fas fa-edit text-primary"></i>
+                        </td>
+                        <td>
+                          <!--Eliminar-->
+                          <i (click)="deleteCalendario(Calendario.id_calendario)" class="fas fa-trash text-danger"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>   
+                  <button  (click)="createPDF()">Crear Reporte</button>             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

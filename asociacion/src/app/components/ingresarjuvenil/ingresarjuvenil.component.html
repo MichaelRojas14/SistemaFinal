@@ -1,0 +1,83 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 align="center">{{titulo | uppercase }}</h2>
+                    <br>
+                    <form class="mt-3" [formGroup]="PosicionForm" (ngSubmit)="agregarPosicion()">
+                        <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="club">
+                              <option *ngFor="let Club of listaClub" [value]="Club.id_club | number">
+                                {{Club.nombre_club}}</option>
+                            </select>
+                            </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="part_jugado"
+                            class="form-control form-control-lg" placeholder="Partidos Jugados">
+                            <div class="text-danger"
+                            *ngIf="PosicionForm.get('part_jugado')?.hasError('required')
+                            && PosicionForm.get('total_goles')?.touched">
+                            <span>Campo <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="part_ganado"
+                            class="form-control form-control-lg" placeholder="Partidos Ganados">
+                            <div class="text-danger"
+                            *ngIf="PosicionForm.get('part_ganado')?.hasError('required')
+                            && PosicionForm.get('part_ganado')?.touched">
+                            <span> Campo <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="part_empatado"
+                            class="form-control form-control-lg" placeholder="Partidos Empatados">
+                            <div class="text-danger"
+                            *ngIf="PosicionForm.get('part_empatado')?.hasError('required')
+                            && PosicionForm.get('part_empatado')?.touched">
+                            <span> Campo <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="part_perdido"
+                            class="form-control form-control-lg" placeholder="Partidos Perdidos">
+                            <div class="text-danger"
+                            *ngIf="PosicionForm.get('part_perdido')?.hasError('required')
+                            && PosicionForm.get('part_perdido')?.touched">
+                            <span> Campo <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="number" formControlName="puntos"
+                            class="form-control form-control-lg" placeholder="Puntos">
+                            <div class="text-danger"
+                            *ngIf="PosicionForm.get('puntos')?.hasError('required')
+                            && PosicionForm.get('puntos')?.touched">
+                            <span> Campo <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="serie">
+                              <option *ngFor="let serie of listaSerie" [value]="serie.id_serie | number">
+                                {{serie.nombre_serie}}</option>
+                            </select>
+                            </div>
+                      <br>
+                      <div class="mb-3">
+                        <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                        <button routerLink="/tabla-juvenil-admin" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>
+

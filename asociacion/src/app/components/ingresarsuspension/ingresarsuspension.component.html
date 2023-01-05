@@ -1,0 +1,49 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 align="center">{{titulo | uppercase }}</h3>
+                    <br>
+                    <form class="mt-3" [formGroup]="SuspensionForm" (ngSubmit)="agregarSuspension()">
+                        <div class="mb-3">
+                            <input type="number" formControlName="fechas_suspension"
+                            class="form-control form-control-lg" placeholder="Fechas Suspension">
+                            <div class="text-danger"
+                                *ngIf="SuspensionForm.get('fechas_suspension')?.hasError('required')
+                                && SuspensionForm.get('fechas_suspension')?.touched">
+                                <span>La Fecha de Suspension del Jugador es <strong>Obligatoria</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                            formControlName="club">
+                              <option *ngFor="let club of listaClub" [value]="club.id_club | number">
+                                {{club.nombre_club}}</option>
+                            </select>
+                            </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="rut_jugador"
+                            class="form-control form-control-lg" placeholder="Rut_Jugador">
+                            <div class="text-danger"
+                            *ngIf="SuspensionForm.get('rut_jugador')?.hasError('required')
+                            && SuspensionForm.get('rut_jugador')?.touched">
+                            <span>El Rut del Jugador es <strong>Obligatorio</strong></span>
+                        </div>
+                          </div>
+                          <br>
+                          <div class="mb-3">
+                            <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                            <button routerLink="/suspensiones-jugador" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                          </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>
+

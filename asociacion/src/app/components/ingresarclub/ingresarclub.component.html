@@ -1,0 +1,59 @@
+<!--CONTENIDO-->
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 align="center">{{titulo | uppercase }}</h3>
+                    <br>
+                    <form class="mt-3" [formGroup]="ClubForm" (ngSubmit)="agregarClub()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre_club"
+                            class="form-control form-control-lg" placeholder="Nombre Club">
+                            <div class="text-danger"
+                                *ngIf="ClubForm.get('nombre_club')?.hasError('required')
+                                && ClubForm.get('nombre_club')?.touched">
+                                <span>El Nombre del Club es <strong>Obligatorio</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="date" formControlName="fecha_fundacion"
+                            class="form-control form-control-lg" placeholder="yyyy-mm-dd">
+                            <div class="text-danger"
+                            *ngIf="ClubForm.get('fecha_fundacion')?.hasError('required')
+                            && ClubForm.get('fecha_fundacion')?.touched">
+                            <span>La fecha de fundación es <strong>Obligatoria</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="ubicacion"
+                            class="form-control form-control-lg" placeholder="Ubicación">
+                            <div class="text-danger"
+                            *ngIf="ClubForm.get('ubicacion')?.hasError('required')
+                            && ClubForm.get('ubicacion')?.touched">
+                            <span>La Ubicación del Club es <strong>Obligatoria</strong></span>
+                        </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="informacion"
+                             class="form-control form-control-lg" placeholder="informacion">
+                             <div class="text-danger"
+                            *ngIf="ClubForm.get('informacion')?.hasError('required')
+                            && ClubForm.get('informacion')?.touched">
+                            <span>La Fecha de Nacimiento del Jugador es <strong>Obligatoria</strong></span>
+                        </div>
+                          </div>
+                      <br>
+                      <div class="mb-3">
+                        <button type="submit" class="btn btn-success btn-lg float-start"> Confirmar </button>
+                        <button routerLink="/clubes" class="btn btn-secondary btn-lg float-end"> Volver </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <br>
+<br>
